@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.gan.phonespecifications.adapter.PhoneAdapter
 import com.gan.phonespecifications.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
@@ -35,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = MainViewModel()
-//        viewModel = ViewModelProvider(this, MyViewModelFactory())[MainViewModel::class.java]
 
         binding.recyclerview.adapter = adapter
 
@@ -59,13 +57,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main,menu)
 
-//        // Associate searchable configuration with the SearchView
-//        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-//        if (menu != null) {
-//            (menu.findItem(R.id.search).actionView as SearchView).apply {
-//                setSearchableInfo(searchManager.getSearchableInfo(componentName))
-//            }
-//        }
         val searchItem: MenuItem = menu.findItem(R.id.search)
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView = searchItem.actionView as SearchView

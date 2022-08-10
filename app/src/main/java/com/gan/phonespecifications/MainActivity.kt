@@ -50,8 +50,7 @@ class MainActivity : AppCompatActivity() {
             progressDialog.isVisible = false
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         })
-
-        handleIntent(intent)
+        viewModel.getPhonesData(MainRepository(retrofitService).getLatest())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -99,10 +98,8 @@ class MainActivity : AppCompatActivity() {
             val query = intent.getStringExtra(SearchManager.QUERY)
             progressDialog(false)
             viewModel.getPhonesData(MainRepository(retrofitService).getSearch(query ?: ""))
-        } else {
-            isTopByFans = false
-            viewModel.getPhonesData(MainRepository(retrofitService).getLatest())
         }
+
     }
 
 
